@@ -1,5 +1,131 @@
 # Changelog
 
+## [1.6.1](https://github.com/yuiseki/react-google-maps/compare/v1.9.0...v1.6.1) (2026-08-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* **map:** Introduction of map instance caching needed a change to the DOM-Structure produced by the map component (added a div-element owned by the Map component to contain the map instance).
+* **map:** The type passed to the `onProjectionChange` is changed from `MapCameraChangedEvent` to `MapEvent`, so there are no longer camera-props available for this event
+* removed the `useStreetViewPanorama()` and `useDirectionsService()` hooks.
+* The behaviour of the props controlling camera parameters (center, zoom, heading and tilt) changed. Unless you are using controlled props, you have to change the prop names from e.g. `center` to `defaultCenter` (the same goes for `zoom`, `heading` and `tilt`).
+
+### Features
+
+* add `channel` prop to APIProvider ([#584](https://github.com/yuiseki/react-google-maps/issues/584)) ([6aa38e5](https://github.com/yuiseki/react-google-maps/commit/6aa38e52a2cf0cc856167489b879871622c74ea8))
+* add 2d geometry components - circle, polyline and polygon ([#917](https://github.com/yuiseki/react-google-maps/issues/917)) ([54b1d0e](https://github.com/yuiseki/react-google-maps/commit/54b1d0e338e03d2dc5defb67297d52f034f2bd99))
+* add 3D map, marker and popover components ([#898](https://github.com/yuiseki/react-google-maps/issues/898)) ([2ba09a1](https://github.com/yuiseki/react-google-maps/commit/2ba09a1c2d4cd9fe3e6d0b6ad1d5047b4cda07f6))
+* add basic keyboard events for advanced marker ([#1001](https://github.com/yuiseki/react-google-maps/issues/1001)) ([af5ab1c](https://github.com/yuiseki/react-google-maps/commit/af5ab1c1743d027dcf3b38f9755fd93714c8b359))
+* add example for drawing tools ([#220](https://github.com/yuiseki/react-google-maps/issues/220)) ([75e91c4](https://github.com/yuiseki/react-google-maps/commit/75e91c4a3b3893ac3d97b5689682bcca5262aac9))
+* add fetchAppCheckToken prop to APIProvider ([#913](https://github.com/yuiseki/react-google-maps/issues/913)) ([992994d](https://github.com/yuiseki/react-google-maps/commit/992994d7e16373bf74c2e407adc5d77e5a510080))
+* add hover events and anchor points to advanced markers ([#472](https://github.com/yuiseki/react-google-maps/issues/472)) ([cc4a397](https://github.com/yuiseki/react-google-maps/commit/cc4a397f0ed2af12a28c21db6afad3a946527131))
+* add map-3d-route example with 3D Map and custom route element (v=alpha) ([#989](https://github.com/yuiseki/react-google-maps/issues/989)) ([4adb9e1](https://github.com/yuiseki/react-google-maps/commit/4adb9e11f70323b7d339f8ddbb2d686ba23690a2))
+* add new `onError` prop for api provider ([#541](https://github.com/yuiseki/react-google-maps/issues/541)) ([bbe5709](https://github.com/yuiseki/react-google-maps/commit/bbe5709e1420e7260234b11a7749ed9b7804e9b7))
+* add new prop InfoWindow.shouldFocus ([#254](https://github.com/yuiseki/react-google-maps/issues/254)) ([c83ea37](https://github.com/yuiseki/react-google-maps/commit/c83ea375295699ed4e3c3a4a6f097cad1a4aca7d))
+* add solution-channel parameter ([#334](https://github.com/yuiseki/react-google-maps/issues/334)) ([f93e43e](https://github.com/yuiseki/react-google-maps/commit/f93e43ee444a86dbc1b594d0c256229e6d207957))
+* add StaticMap component with SSR support ([#633](https://github.com/yuiseki/react-google-maps/issues/633)) ([55acea2](https://github.com/yuiseki/react-google-maps/commit/55acea2a0b82727e487ee30fb788a05ba7dce153))
+* add TypeScript type definitions for Google Maps custom elements ([#857](https://github.com/yuiseki/react-google-maps/issues/857)) ([a946a36](https://github.com/yuiseki/react-google-maps/commit/a946a36ab41b092631987c04bebcd34ad4f84aa0))
+* **advanced-marker:** add style prop to add styles to content-element ([#337](https://github.com/yuiseki/react-google-maps/issues/337)) ([e942fb5](https://github.com/yuiseki/react-google-maps/commit/e942fb5f5543a0a27e9987ee4324825958f08fdf))
+* **advanced-marker:** add support for `clickable` option ([#341](https://github.com/yuiseki/react-google-maps/issues/341)) ([ca96e54](https://github.com/yuiseki/react-google-maps/commit/ca96e540a2117f7437745e8e1f71f83ef6c04e25))
+* **api-loader:** migrate to @googlemaps/js-api-loader ([#885](https://github.com/yuiseki/react-google-maps/issues/885)) ([4af51dd](https://github.com/yuiseki/react-google-maps/commit/4af51ddf42953a7b0ca3050be712aed0e8efce32))
+* better handling for missing map configuration ([#308](https://github.com/yuiseki/react-google-maps/issues/308)) ([b318d67](https://github.com/yuiseki/react-google-maps/commit/b318d676088e6f0ef787ffa911c552a12ecb4895))
+* handle API-key errors in map-component ([#165](https://github.com/yuiseki/react-google-maps/issues/165)) ([26ccc15](https://github.com/yuiseki/react-google-maps/commit/26ccc15d640346ce71157d387fbc56720234fa4c))
+* implement usage attribution ([#844](https://github.com/yuiseki/react-google-maps/issues/844)) ([af36b8f](https://github.com/yuiseki/react-google-maps/commit/af36b8feee4acdf44ee17a73e962a7ea062e72db))
+* **infowindow:** add `className` and `style` props ([92854c9](https://github.com/yuiseki/react-google-maps/commit/92854c9103c90a8f0ad1c16eba729402b1e36919))
+* **infowindow:** add missing options and events ([92854c9](https://github.com/yuiseki/react-google-maps/commit/92854c9103c90a8f0ad1c16eba729402b1e36919))
+* **infowindow:** add new headerContent prop ([#396](https://github.com/yuiseki/react-google-maps/issues/396)) ([0d40c81](https://github.com/yuiseki/react-google-maps/commit/0d40c81fe0d850accccf031bfb4f6f7412eea73a)), closes [#378](https://github.com/yuiseki/react-google-maps/issues/378)
+* **infowindow:** InfoWindow overhaul ([#335](https://github.com/yuiseki/react-google-maps/issues/335)) ([92854c9](https://github.com/yuiseki/react-google-maps/commit/92854c9103c90a8f0ad1c16eba729402b1e36919))
+* **map-control:** add className prop ([#967](https://github.com/yuiseki/react-google-maps/issues/967)) ([37bfe46](https://github.com/yuiseki/react-google-maps/commit/37bfe46ab0430db30b8a27cbdc2f43912314085c))
+* **map3d:** refactor components to use custom elements ([#765](https://github.com/yuiseki/react-google-maps/issues/765)) ([8b60a78](https://github.com/yuiseki/react-google-maps/commit/8b60a78115fd6d5f321996f570089223300a736d))
+* **map:** add padding option to defaultBounds ([#392](https://github.com/yuiseki/react-google-maps/issues/392)) ([9dc65dc](https://github.com/yuiseki/react-google-maps/commit/9dc65dc36c1d3efb17ebcfa55da3b2f3909eb63f))
+* **map:** implement initial version of map-instance caching ([#349](https://github.com/yuiseki/react-google-maps/issues/349)) ([4a6e83a](https://github.com/yuiseki/react-google-maps/commit/4a6e83a26f06131baac288e3474d0e3163715f92))
+* new 3d components ([#1009](https://github.com/yuiseki/react-google-maps/issues/1009)) ([69bf2f7](https://github.com/yuiseki/react-google-maps/commit/69bf2f7dd75eefdf6118d0741c2c287b67956eac))
+* **pin:** split Pin component into modern and legacy implementations ([#945](https://github.com/yuiseki/react-google-maps/issues/945)) ([4826836](https://github.com/yuiseki/react-google-maps/commit/4826836e737ba1664d6fea3cae24e95a2303392e))
+* restore map state when changing mapId ([#213](https://github.com/yuiseki/react-google-maps/issues/213)) ([0db363f](https://github.com/yuiseki/react-google-maps/commit/0db363f9c0291135b31ac387d4513bbaf652517a))
+* update eslint-plugin-react-hooks ([#851](https://github.com/yuiseki/react-google-maps/issues/851)) ([6ebe344](https://github.com/yuiseki/react-google-maps/commit/6ebe344d4baf36cf18924037dec43b82cf9b5561))
+* updated AdvancedMarker anchoring implementation ([#841](https://github.com/yuiseki/react-google-maps/issues/841)) ([d7b128e](https://github.com/yuiseki/react-google-maps/commit/d7b128e132fbb76855bcf56f1947796480a97705))
+
+
+### Bug Fixes
+
+* add `loading=async` to maps API url ([cb1336f](https://github.com/yuiseki/react-google-maps/commit/cb1336fc97dda8b3ad99c3f9a9a560cf8186056b))
+* add explicit type for exported function components ([#611](https://github.com/yuiseki/react-google-maps/issues/611)) ([a5b0359](https://github.com/yuiseki/react-google-maps/commit/a5b035986872b3abb8c28d6659034c2a897476a3)), closes [#583](https://github.com/yuiseki/react-google-maps/issues/583)
+* add support Next.js 15 ([#609](https://github.com/yuiseki/react-google-maps/issues/609)) ([0e673c2](https://github.com/yuiseki/react-google-maps/commit/0e673c262a0a704a0d85a7f34cf4409965d11a8b))
+* adjust advanced marker markup to fix anchoring & collision behavior ([#577](https://github.com/yuiseki/react-google-maps/issues/577)) ([97a98b2](https://github.com/yuiseki/react-google-maps/commit/97a98b2a04b896a892351a178fecafa665c03113))
+* **advanced-marker:** apply marker class when rendering a Pin ([#384](https://github.com/yuiseki/react-google-maps/issues/384)) ([e8a4cc3](https://github.com/yuiseki/react-google-maps/commit/e8a4cc3aca92e92c20c1e99ba19fee7d713f4785))
+* **advanced-marker:** remove content element in cleanup ([#351](https://github.com/yuiseki/react-google-maps/issues/351)) ([128df87](https://github.com/yuiseki/react-google-maps/commit/128df8730b7e1549e530a108192e7bae0699f199))
+* allow AdvancedMarker to accept space-separated multiple class names ([#143](https://github.com/yuiseki/react-google-maps/issues/143)) ([eab53e2](https://github.com/yuiseki/react-google-maps/commit/eab53e2ffa69325fb927b16d59f6aa7faa589a49))
+* allow negative anchor values for AdvancedMarker ([#695](https://github.com/yuiseki/react-google-maps/issues/695)) ([d2de370](https://github.com/yuiseki/react-google-maps/commit/d2de370d4c938293b24b662bb333b2db40e14923))
+* api-loader didn't call callback on repeat load calls ([743878a](https://github.com/yuiseki/react-google-maps/commit/743878a33abe2b0fb6bfe96377df07066536e51e))
+* avoid re-render on every importLibrary() call ([#135](https://github.com/yuiseki/react-google-maps/issues/135)) ([32b5894](https://github.com/yuiseki/react-google-maps/commit/32b5894518a22793c236bcab33291f25b48f7367))
+* avoid unnecessary state-updates in api-provider ([#551](https://github.com/yuiseki/react-google-maps/issues/551)) ([46068c9](https://github.com/yuiseki/react-google-maps/commit/46068c9b3f3e930d464e2314181e2f6ed32a9aa7))
+* better handling for `clickable` prop in AdvancedMarker ([#906](https://github.com/yuiseki/react-google-maps/issues/906)) ([c8ff82f](https://github.com/yuiseki/react-google-maps/commit/c8ff82fd2fc251685782d300260d503f2d44e5a4))
+* **build:** don't build examples with library build ([1b43288](https://github.com/yuiseki/react-google-maps/commit/1b43288b2f4e5525717ffe7cb6feb5e262e984b3))
+* **custom-element-types:** update type definitions for boolean values ([8db4ad0](https://github.com/yuiseki/react-google-maps/commit/8db4ad07c285056842e50e69a7866f3578f4100f))
+* **deps-dev:** bump react, react-dom and corresponding types ([#650](https://github.com/yuiseki/react-google-maps/issues/650)) ([02fe28f](https://github.com/yuiseki/react-google-maps/commit/02fe28fdc0e69a3ab0b3e8555b156b4c36d7c75c))
+* **docs:** use correct spelling of JavaScript ([#312](https://github.com/yuiseki/react-google-maps/issues/312)) ([f38d3c4](https://github.com/yuiseki/react-google-maps/commit/f38d3c4004663fd1850c00dca7ddfb7e92b8d5cf))
+* don't use potentially unreliable addListener functions ([#158](https://github.com/yuiseki/react-google-maps/issues/158)) ([7309efa](https://github.com/yuiseki/react-google-maps/commit/7309efa1db8b392ebe2840e5d527a92419c9fc2a))
+* ensure proper type inference of APILoadingStatus ([#747](https://github.com/yuiseki/react-google-maps/issues/747)) ([2c59d59](https://github.com/yuiseki/react-google-maps/commit/2c59d59b475b9bc1eef7d7f7bd9b08c2d215a3cb))
+* export api-loading-status types ([#231](https://github.com/yuiseki/react-google-maps/issues/231)) ([9695034](https://github.com/yuiseki/react-google-maps/commit/9695034d3c51936c2c701b7fb8be4a864f349c3e)), closes [#230](https://github.com/yuiseki/react-google-maps/issues/230)
+* export event-types ([#167](https://github.com/yuiseki/react-google-maps/issues/167)) ([cdd6b72](https://github.com/yuiseki/react-google-maps/commit/cdd6b72f848bf5b54618862788e1a3a221fcdce1))
+* export type properly ([#170](https://github.com/yuiseki/react-google-maps/issues/170)) ([e561031](https://github.com/yuiseki/react-google-maps/commit/e56103149f15977ae0e7f62dd359cd3759b71fc9))
+* guard against invalid camera values in map events ([#1023](https://github.com/yuiseki/react-google-maps/issues/1023)) ([b487463](https://github.com/yuiseki/react-google-maps/commit/b487463255adc74edcff0da155e8b0c4935980bc))
+* handle externally-loaded importLibrary in loader ([#1002](https://github.com/yuiseki/react-google-maps/issues/1002)) ([f76ed12](https://github.com/yuiseki/react-google-maps/commit/f76ed12f2b2a7cd0f4865c726537a01424d79cf5))
+* **hooks:** add fallback to useLayoutEffect for React 16/17 compatibility ([#950](https://github.com/yuiseki/react-google-maps/issues/950)) ([86ad8ee](https://github.com/yuiseki/react-google-maps/commit/86ad8ee87c4ffc53084a8da525398c2e0e851f84))
+* **hooks:** add SafeReact and fallback for useInsertionEffect to ensure compatibility with React 16/17 ([#1017](https://github.com/yuiseki/react-google-maps/issues/1017)) ([1a503a8](https://github.com/yuiseki/react-google-maps/commit/1a503a83efa20aa20b1d9a35ae9bd351401c6296)), closes [#957](https://github.com/yuiseki/react-google-maps/issues/957)
+* **hooks:** avoid static useInsertionEffect imports ([#960](https://github.com/yuiseki/react-google-maps/issues/960)) ([f2870c1](https://github.com/yuiseki/react-google-maps/commit/f2870c1a9e0cdfdce1a5f8efe4a7f756683bb447))
+* improve types ColorScheme and RenderingType ([#675](https://github.com/yuiseki/react-google-maps/issues/675)) ([785927a](https://github.com/yuiseki/react-google-maps/commit/785927a9b69e6a2c08ab013f607270d0dc0fc653))
+* **info-window:** fix reappearing InfoWindows ([#393](https://github.com/yuiseki/react-google-maps/issues/393)) ([dc51eb9](https://github.com/yuiseki/react-google-maps/commit/dc51eb979e5db6fb57a07d52efa36ef03e83dfcf))
+* infowindow double rendering and eslint warnings ([#185](https://github.com/yuiseki/react-google-maps/issues/185)) ([404cc06](https://github.com/yuiseki/react-google-maps/commit/404cc06253a92f120f97f72179949a8f4c0fc87b))
+* InfoWindow.shouldFocus doesn't work with false as value ([#278](https://github.com/yuiseki/react-google-maps/issues/278)) ([2f4b508](https://github.com/yuiseki/react-google-maps/commit/2f4b508a3da87f778496043dc7d5b40f47837d1f))
+* **infowindow:** add missing cleanup for infowindow ([92854c9](https://github.com/yuiseki/react-google-maps/commit/92854c9103c90a8f0ad1c16eba729402b1e36919))
+* **infowindow:** better dependency checks, using `useDeepCompareEffect` where needed ([92854c9](https://github.com/yuiseki/react-google-maps/commit/92854c9103c90a8f0ad1c16eba729402b1e36919))
+* **infowindow:** removed unneeded dependency in infowindow hooks ([92854c9](https://github.com/yuiseki/react-google-maps/commit/92854c9103c90a8f0ad1c16eba729402b1e36919))
+* **infowindow:** replace useDeepCompareEffect with useEffect ([#786](https://github.com/yuiseki/react-google-maps/issues/786)) ([1b25e80](https://github.com/yuiseki/react-google-maps/commit/1b25e80107ea7589c2354d6c44e88761fd50d12f))
+* introduce useEffectEvent to improve stability of event handlers ([#866](https://github.com/yuiseki/react-google-maps/issues/866)) ([e44933e](https://github.com/yuiseki/react-google-maps/commit/e44933e7d5f3d79e845081b2cf038f05a0b001f9))
+* map controls crashing when invalid key is provided ([#290](https://github.com/yuiseki/react-google-maps/issues/290)) ([5052dfb](https://github.com/yuiseki/react-google-maps/commit/5052dfbf3735ff07319b7bd7108ae9448b0c2840))
+* **map:** add support for new and missing mapOptions ([#501](https://github.com/yuiseki/react-google-maps/issues/501)) ([f22af50](https://github.com/yuiseki/react-google-maps/commit/f22af50793622c2bee0508a4b57307dd18302d1b))
+* **map:** change event-type of projectionChanged event to MapEvent ([#346](https://github.com/yuiseki/react-google-maps/issues/346)) ([83f9309](https://github.com/yuiseki/react-google-maps/commit/83f93091c858663b0183dd62bdc212a246013072))
+* **map:** don't crash when remounting with a broken cached map instance ([#984](https://github.com/yuiseki/react-google-maps/issues/984)) ([31a5261](https://github.com/yuiseki/react-google-maps/commit/31a5261e9907efe8739c5d5cc1d347316ea26241)), closes [#982](https://github.com/yuiseki/react-google-maps/issues/982)
+* **map:** improve reuseMaps reliability after remounting ([#920](https://github.com/yuiseki/react-google-maps/issues/920)) ([e9296de](https://github.com/yuiseki/react-google-maps/commit/e9296deeb21f127cb0b5cdc7aea7a77749824e74))
+* **map:** remove [@ts-expect-error](https://github.com/ts-expect-error) after @types/google.maps update ([deb2bc7](https://github.com/yuiseki/react-google-maps/commit/deb2bc733800cb99ad8edeb30059ad050a16ee86))
+* **map:** set container position to relative ([#356](https://github.com/yuiseki/react-google-maps/issues/356)) ([7fa2b71](https://github.com/yuiseki/react-google-maps/commit/7fa2b711952a2472c409c38cd39edc1866cecbe3))
+* **map:** set other container position to relative ([#357](https://github.com/yuiseki/react-google-maps/issues/357)) ([8e77d70](https://github.com/yuiseki/react-google-maps/commit/8e77d70c272ac243c5d53f3dd6c02f508104226f))
+* **map:** undefined rendering-type and color-scheme ([#515](https://github.com/yuiseki/react-google-maps/issues/515)) ([c288d15](https://github.com/yuiseki/react-google-maps/commit/c288d15e2b4bfa5d952ae06c1f586888987f86c7))
+* memoize context-values to avoid excessive re-renders ([#287](https://github.com/yuiseki/react-google-maps/issues/287)) ([bea68f9](https://github.com/yuiseki/react-google-maps/commit/bea68f923e9326188baebd8a89b9ad5cbf891303)), closes [#285](https://github.com/yuiseki/react-google-maps/issues/285)
+* more efficient useMemoized hook and fixed infowindow issues ([#903](https://github.com/yuiseki/react-google-maps/issues/903)) ([8cb7151](https://github.com/yuiseki/react-google-maps/commit/8cb7151caf5da2e0b325fcad9ff434913f9f8a33))
+* move vite back to devDependencies ([#955](https://github.com/yuiseki/react-google-maps/issues/955)) ([d3535ac](https://github.com/yuiseki/react-google-maps/commit/d3535ac787ba6e2b8360044813d171cd3a876f26))
+* omit map prop from markers ([#305](https://github.com/yuiseki/react-google-maps/issues/305)) ([8a38acf](https://github.com/yuiseki/react-google-maps/commit/8a38acf04ab665bbeeeef87a87d195bcbf44ccea))
+* prevent api provider race condition, defer loading state update ([#970](https://github.com/yuiseki/react-google-maps/issues/970)) ([7fd6efe](https://github.com/yuiseki/react-google-maps/commit/7fd6efe57db823297a3cbca2404a5599d56e1843))
+* prevent passing empty parameters to ApiLoader ([#193](https://github.com/yuiseki/react-google-maps/issues/193)) ([0601753](https://github.com/yuiseki/react-google-maps/commit/0601753c03539dc1180272b31aafab911ebe9c2c))
+* remove deep-link into fast-deep-equal package ([#208](https://github.com/yuiseki/react-google-maps/issues/208)) ([f0be380](https://github.com/yuiseki/react-google-maps/commit/f0be3803eeb3aa0c80b19b42977e714dcb746a2f))
+* remove explicit types for components using forwardRef ([#620](https://github.com/yuiseki/react-google-maps/issues/620)) ([8448a33](https://github.com/yuiseki/react-google-maps/commit/8448a336fdd2e489493bc40068bfa58d23267409)), closes [#619](https://github.com/yuiseki/react-google-maps/issues/619) [#617](https://github.com/yuiseki/react-google-maps/issues/617)
+* **static-maps:** remove path grouping by style ([#809](https://github.com/yuiseki/react-google-maps/issues/809)) ([d1f499e](https://github.com/yuiseki/react-google-maps/commit/d1f499e6089086e40265c9b21c6a318d292e2f9e))
+* trigger release for new library function from commit 31f2655 ([b5a13e5](https://github.com/yuiseki/react-google-maps/commit/b5a13e598d97ae65304df6f79d05247b847e670b))
+* trigger release-please action ([0eaabeb](https://github.com/yuiseki/react-google-maps/commit/0eaabeba45349fae98118e38929d8111134a5ba5))
+* **types:** add new PinElement and PinElementOptions types to augmentations ([3751d0d](https://github.com/yuiseki/react-google-maps/commit/3751d0d76a884fe76cb8bd23a993720416932c03))
+* **types:** add types-reference to google.maps ([#520](https://github.com/yuiseki/react-google-maps/issues/520)) ([ed19636](https://github.com/yuiseki/react-google-maps/commit/ed196365821d6ac8b97baa1a900842990f1959f2)), closes [#519](https://github.com/yuiseki/react-google-maps/issues/519)
+* **types:** inline PlaceContextualElementOptions in types for 'gmp-place-contextual' ([0626be2](https://github.com/yuiseki/react-google-maps/commit/0626be24df8deb98b4779a121da6fbdb5023793d))
+* Update calc clusters to happen after Idle event - reduces issue 563 ([#806](https://github.com/yuiseki/react-google-maps/issues/806)) ([bed6ccd](https://github.com/yuiseki/react-google-maps/commit/bed6ccd31911ac82decc758bd4ecee0a18fe492f))
+* update dependencies and update importLibrary typings ([#1019](https://github.com/yuiseki/react-google-maps/issues/1019)) ([ef951c4](https://github.com/yuiseki/react-google-maps/commit/ef951c49a7b4d9967b86d40aacc81b850c9b9313))
+* update gmp types ([#973](https://github.com/yuiseki/react-google-maps/issues/973)) ([2f5c29c](https://github.com/yuiseki/react-google-maps/commit/2f5c29cd32f404ecde23b4ee8b33f2b268d8c7b1))
+* update useMapsLibrary hook to include maps3d ([bd218bb](https://github.com/yuiseki/react-google-maps/commit/bd218bb65f8a308f59cbce16cce32019c27101e6))
+* use correct pointer events behaviour ([#997](https://github.com/yuiseki/react-google-maps/issues/997)) ([538e918](https://github.com/yuiseki/react-google-maps/commit/538e918353379e3b5f2b1abb34b0af733a4d747a))
+* use deep compare effect to prevent infowindow close ([#642](https://github.com/yuiseki/react-google-maps/issues/642)) ([bfa85c1](https://github.com/yuiseki/react-google-maps/commit/bfa85c177796ac05cb626590c2467a31edab86eb))
+* use parameter `v` instead of `version` ([0626fb6](https://github.com/yuiseki/react-google-maps/commit/0626fb6411ada3293d0f4a640dff07d0e19fc805))
+
+
+### Miscellaneous Chores
+
+* add tslib as devDependency ([#854](https://github.com/yuiseki/react-google-maps/issues/854)) ([fe42240](https://github.com/yuiseki/react-google-maps/commit/fe42240abbca9ef30d247759bccfdbb93067ae45))
+* tag 1.0.0 release ([afb67a7](https://github.com/yuiseki/react-google-maps/commit/afb67a7b076e83c025a147d488a93c33150c5b15))
+
+
+### Code Refactoring
+
+* improved state-handling implementation ([#181](https://github.com/yuiseki/react-google-maps/issues/181)) ([904b918](https://github.com/yuiseki/react-google-maps/commit/904b918427da071477ed4bb8c2c65006b35dff88))
+* remove obsolete hooks ([#219](https://github.com/yuiseki/react-google-maps/issues/219)) ([69b2373](https://github.com/yuiseki/react-google-maps/commit/69b23734270e8754a518790620872dc1f4136cc7))
+
 ## [1.9.0](https://github.com/visgl/react-google-maps/compare/v1.8.3...v1.9.0) (2026-06-27)
 
 
